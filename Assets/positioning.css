@@ -13,3 +13,7 @@ article {
 div {
     margin: 10px 0;
 }
+
+form input[type=radio] {
+    margin: 10px 10px;
+}
