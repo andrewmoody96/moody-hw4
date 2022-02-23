@@ -27,19 +27,27 @@
       </article>
     </section>
     <section class="container" id="quiz">
-        <!-- Use JS to append questions to these ID's. -->
-      <form action="submit" name="quiz">
-        <input type="radio" name="answer" id="A" />
-        <label for="A">A</label>
-        <input type="radio" name="answer" id="B" />
-        <label for="B">B</label>
-        <input type="radio" name="answer" id="C" />
-        <label for="C">C</label>
-      </form>
-      <div id="questions"></div>
-      <div id="answers"></div>
+      <!-- CSS to display each radio button as block. This should have them display vertically. -->
+      <!-- Use JS to append questions to these ID's. -->
+      <div id="questions">
+          <!-- Use JS to append question's text to the textContent. -->
+          <!-- p tag is placeholder -->
+          <p>CURRENT QUESTION</p> 
+      </div>
+      <div id="answers">
+        <form action="submit" name="quiz">
+          <input type="radio" name="answer" id="A" />
+          <label for="A">A:</label><br>
+          <input type="radio" name="answer" id="B" />
+          <label for="B">B:</label><br>
+          <input type="radio" name="answer" id="C" />
+          <label for="C">C:</label><br>
+        </form>
+      </div>
     </section>
-
+    <footer>
+        <p>&copy; 2022 - Created by Andrew Moody</p>
+    </footer>
     <script src="./script.js"></script>
   </body>
 </html>
