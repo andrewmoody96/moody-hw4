@@ -59,6 +59,7 @@ var alreadyAsked = [];
 function createQuiz() {
   console.log("Clicked");
   // Stores question output
+  document.getElementById("selectYourAnswer-text").style.display = "block";
   document.getElementById("quiz-form").style.display = "block";
   let question = [];
   myQuestions.forEach((currentQuestion, questionNumber) => {
@@ -101,4 +102,4 @@ function createQuiz() {
 startButton.addEventListener("click", createQuiz);
 
 // Click submit to generate the next random question. Then display that question.
-submitButton.addEventListener("click", displayQuestion);
+// submitButton.addEventListener("click", displayQuestion);

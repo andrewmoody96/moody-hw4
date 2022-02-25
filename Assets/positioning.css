@@ -24,6 +24,11 @@ div {
     margin: 10px 0;
 }
 
+#selectYourAnswer-text {
+    display: none;
+}
+
+
 form {
     display: none;
 }
