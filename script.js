@@ -1,4 +1,5 @@
-var questionText = document.querySelector("#currentQuestion");
+var startButton = document.querySelector("#startButton");
+var quizContainer = document.querySelector("#quiz");
 var submitButton = document.querySelector("#submit");
 
 
@@ -55,30 +56,32 @@ var currentQuestion = "";
 // push the displayed index into alreadyAsked and remove it from possibleQuestions
 var alreadyAsked = [];
 
-
-
-
-function displayQuestion(event) {
-  event.preventDefault();
+function createQuiz() {
   console.log("Clicked");
-  var question = document.createElement()
-  
-  
-  
-  // if (possibleQuestions.length === 0) {
-  //     return("Game Over");
-  // } else {
-  //     for (var i = 0; i < possibleQuestions.length; i++)
-        
-  // }
-  
-//   if (alreadyAsked.length === 0) {
-//       for (var i = 0; i < possibleQuestions.length; i++) alreadyAsked.push(i);
-  
-  
-//     }
+  // Stores question output
+  document.getElementById("quiz-form").style.display = "block";
+  let question = [];
+  myQuestions.forEach((currentQuestion, questionNumber) => {
+      // Stores list of answers.
+      const answers = [];
+      
+      for(letter in currentQuestion.answers){
+        answers.push(
+          `<label><input type="radio" name="question${questionNumber}" value="${letter}">
+          ${letter} :
+          ${currentQuestion.answers[letter]}
+          </label>`
+          );
+        }
+        question.push(
+          `<div class ="question"> ${currentQuestion.question}</div>
+          <div class="answers"> ${answers.join('')}</div`
+        );
+      }  
+  );
+  quizContainer.innerHTML = question.join('');
 
-  console.log(possibleQuestions.toString);
+  console.log(question.toString);
 
 
 //   currentQuestion = possibleQuestions.forEach()
@@ -93,6 +96,9 @@ function displayQuestion(event) {
 //   currentQuestion.append(randomQuestion);
 }
 
+
+// Starts quiz.
+startButton.addEventListener("click", createQuiz);
+
 // Click submit to generate the next random question. Then display that question.
-// need to preventDefault
 submitButton.addEventListener("click", displayQuestion);

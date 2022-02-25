@@ -28,22 +28,12 @@
         </p> 
       </article>
     </section>
-    <section class="container" id="quiz">
+    <button id="startButton">Start Quiz</button>
+    <section class="container" id="quizContainer">
       <!-- Use JS to append questions to these ID's. -->
-      <div id="questions">
-        <p id="currentQuestion">CURRENT QUESTION</p> 
-          <!-- Use JS to append question's text to the textContent. -->
-          <!-- p tag is placeholder -->
-      </div>
-      <div id="answers">
+      <div id="quiz">
         <p>Select your answer.</p>
-        <form name="quiz">
-          <input type="radio" name="answer" id="A" />
-          <label for="A">A:</label><br>
-          <input type="radio" name="answer" id="B" />
-          <label for="B">B:</label><br>
-          <input type="radio" name="answer" id="C" />
-          <label for="C">C:</label><br>
+        <form name="quiz" id="quiz-form">
           <input type="submit" name="submitAnswer" id="submit" value="Submit Answer">
         </form>
       </div>
