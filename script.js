@@ -56,12 +56,15 @@ var currentQuestion = "";
 // push the displayed index into alreadyAsked and remove it from possibleQuestions
 var alreadyAsked = [];
 
+// Make sure that question is displayed before the answers. This is ugly right now but it WORKS. 
 function createQuiz() {
   console.log("Clicked");
   // Stores question output
   document.getElementById("selectYourAnswer-text").style.display = "block";
   document.getElementById("quiz-form").style.display = "block";
   let question = [];
+
+  // Show submit ONCE -- Place outside of loop
   myQuestions.forEach((currentQuestion, questionNumber) => {
       // Stores list of answers.
       const answers = [];
@@ -97,6 +100,25 @@ function createQuiz() {
 //   currentQuestion.append(randomQuestion);
 }
 
+function logResults() {
+  const allAnswers = quizContainer.querySelectorAll('.answers');
+  // keeps track of user's correct answers
+  let countCorrect = 0;
+  let countIncorrect = 0;
+  myQuestions.forEach((currentQuestion, questionNumber) => {
+    // finds user's selected answer
+    var answerContainer = allAnswers[questionNumber];
+    var selector = `input[name=question${questionNumber}]:checked`;
+    var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+    // checks if answer is correct
+    if(userAnswer === currentQuestion.correctAnswer){
+      numCorrect++;
+    } else {
+      numIncorrect++;
+    }
+  })
+}
 
 // Starts quiz.
 startButton.addEventListener("click", createQuiz);
