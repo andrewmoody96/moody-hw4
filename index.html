@@ -32,20 +32,20 @@
       <!-- CSS to display each radio button as block. This should have them display vertically. -->
       <!-- Use JS to append questions to these ID's. -->
       <div id="questions">
+        <p>CURRENT QUESTION</p> 
           <!-- Use JS to append question's text to the textContent. -->
           <!-- p tag is placeholder -->
-          <p>CURRENT QUESTION</p> 
       </div>
       <div id="answers">
         <p>Select your answer.</p>
-        <form action="submit" name="quiz">
+        <form name="quiz">
           <input type="radio" name="answer" id="A" />
           <label for="A">A:</label><br>
           <input type="radio" name="answer" id="B" />
           <label for="B">B:</label><br>
           <input type="radio" name="answer" id="C" />
           <label for="C">C:</label><br>
-          <input type="submit" name="submitAnswer" id="submit">
+          <input type="submit" name="submitAnswer" id="submit" value="Submit Answer">
         </form>
       </div>
     </section>
