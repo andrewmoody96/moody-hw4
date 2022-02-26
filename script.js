@@ -88,19 +88,7 @@ function createQuiz() {
   quizContainer.insertAdjacentHTML(
     "beforeend",
     `<button type="submit" id="submit"></button>`
-  );
-  
-  // console.log(currentQuestion);
-
-  //   currentQuestion = possibleQuestions.forEach()
-  //   for (let i = 0; i <= 4; i++) {
-  //       console.log(currentQuestion)
-  //       currentQuestion = possibleQuestions[i];
-  //   }
-  //   console.log(currentQuestion);
-
-  //   document.getElementById("#questions");
-  //   currentQuestion.append(randomQuestion);
+  );  
 }
 
 
