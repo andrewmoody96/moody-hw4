@@ -87,7 +87,7 @@ function createQuiz() {
   // quizForm.innerHTML = `<input type="submit" name="submitAnswer" id="submit" value="Submit Answer"></input>`;
   quizContainer.insertAdjacentHTML(
     "beforeend",
-    `<button type="submit" id="submit"></button>`
+    `<button type="submit" id="submit">Submit Answers</button>`
   );  
 }
 
