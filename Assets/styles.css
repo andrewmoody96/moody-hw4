@@ -1,0 +1,63 @@
+body {
+  margin: 15px;
+  background-color: papayawhip;
+}
+
+header {
+  background-color: coral;
+}
+
+h1 {
+  margin: 10px 10px;
+  padding: 10px;
+}
+
+/* nav a {
+    margin: 10px 10px;
+    padding: 0 10px;
+} */
+
+p {
+  margin: 10px 10px;
+}
+#instructions {
+  background-color: cornflowerblue;
+}
+
+#questions {
+  background-color: red;
+}
+
+#answers {
+  background-color: yellow;
+}
+
+#answers form {
+  background-color: green;
+}
+article {
+  margin: 10px 0;
+}
+
+div {
+  margin: 10px 0;
+}
+
+#selectYourAnswer-text {
+  display: none;
+}
+
+/* form {
+    display: none;
+} */
+
+form input[type="radio"] {
+  margin: 10px 10px;
+}
+
+form input[type="submit"] {
+  margin: 10px 10px;
+}
+footer {
+  background-color: lightslategrey;
+}
