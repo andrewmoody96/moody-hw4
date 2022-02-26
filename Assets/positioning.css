@@ -29,9 +29,9 @@ div {
 }
 
 
-form {
+/* form {
     display: none;
-}
+} */
 
 form input[type=radio] {
     margin: 10px 10px;
