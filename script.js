@@ -1,7 +1,7 @@
 // Functions:
-// Starts quiz and populates the quiz with questions. 
+// Starts quiz and populates the quiz with questions.
 function createQuiz() {
-  console.log("Clicked");  
+  console.log("Clicked");
   // Stores question output
   const output = [];
 
@@ -25,10 +25,17 @@ function createQuiz() {
       </div>`
     );
   });
-  quizContainer.innerHTML = output.join(""); 
-};
+  quizContainer.innerHTML = output.join("");
+}
 
-// Logs results to console.
+function gameOver() {
+  prevBtn.style.display = "none";
+  nextBtn.style.display = "none";
+  submitBtn.style.display = "none";
+  scoresBtn.style.display = "inline-block";
+}
+
+// Logs results to console & localStorage.
 function logResults() {
   console.log("Starting to log.");
   const answerContainers = quizContainer.querySelectorAll(".answers");
@@ -41,7 +48,7 @@ function logResults() {
     const answerContainer = answerContainers[questionNumber];
     const selector = `input[name=question${questionNumber}]:checked`;
     const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-    
+
     // checks if answer is correct
     if (userAnswer === currentQuestion.correctAnswer) {
       countCorrect++;
@@ -50,13 +57,17 @@ function logResults() {
       console.log("That ain't it.");
     }
   });
-  var name = prompt("What's your name?");
-  console.log(name);
+  var initials = prompt("Enter your initials.");
+  console.log(initials);
   var results = countCorrect;
+  localStorage.setItem("score", results);
   console.log(results);
-};
+  localStorage.setItem("userInitials", initials);
 
-// function storeResults()
+  // Creates button to view scores page.
+  if (prompt === true || prompt === false) {
+  }
+}
 
 function showSlide(n) {
   slides[currentSlide].classList.remove("active-slide");
@@ -74,7 +85,7 @@ function showSlide(n) {
     nextBtn.style.display = "inline-block";
     submitBtn.style.display = "none";
   }
-};
+}
 
 function showNext() {
   showSlide(currentSlide + 1);
@@ -87,8 +98,9 @@ function showPrev() {
 const quizContainer = document.getElementById("quiz");
 const scoreContainer = document.getElementById("score");
 const submitBtn = document.getElementById("submit");
+const scoresBtn = document.getElementById("scoresBtn");
 const myQuestions = [
-// Object containing all possible questions.
+  // Object containing all possible questions.
   {
     question: "Inside which HTML element do we put our JavaScript?",
     answers: {
@@ -152,7 +164,7 @@ showSlide(currentSlide);
 // Event Listeners
 
 // Submits answers at the end of the quiz.
-submitBtn.addEventListener("click", logResults)
+submitBtn.addEventListener("click", logResults);
 
 // Returns to the previous question.
 prevBtn.addEventListener("click", showPrev);

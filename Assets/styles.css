@@ -79,3 +79,6 @@ footer {
     margin-top: 40px;
   }
 
+#scoresBtn {
+    display: none;
+}
