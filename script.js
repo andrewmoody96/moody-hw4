@@ -63,11 +63,8 @@ function logResults() {
   localStorage.setItem("score", results);
   console.log(results);
   localStorage.setItem("userInitials", initials);
-
-  // Creates button to view scores page.
-  if (prompt === true || prompt === false) {
-  }
-}
+  scoresBtn.style.display = "inline-block";
+};
 
 function showSlide(n) {
   slides[currentSlide].classList.remove("active-slide");
@@ -98,7 +95,7 @@ function showPrev() {
 const quizContainer = document.getElementById("quiz");
 const scoreContainer = document.getElementById("score");
 const submitBtn = document.getElementById("submit");
-const scoresBtn = document.getElementById("scoresBtn");
+const scoresBtn = document.getElementById("scoresLink");
 const myQuestions = [
   // Object containing all possible questions.
   {
