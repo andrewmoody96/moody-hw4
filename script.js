@@ -124,9 +124,9 @@ const myQuestions = [
   {
     question: "How do you call a function named 'myFunction'?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Answer 3",
+      a: "call {myFunction()}",
+      b: "myFunction()",
+      c: "call function myFunction()",
     },
     correctAnswer: "b",
   },
@@ -135,7 +135,7 @@ const myQuestions = [
       "How do you write an IF statement to execute code when 'i' is not equal to 5?",
     answers: {
       a: "Answer 1",
-      b: "Answer 2",
+      b: "if (i != 5)",
       c: "Answer 3",
     },
     correctAnswer: "b",
@@ -143,9 +143,9 @@ const myQuestions = [
   {
     question: "How do you create a function in JavaScript?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Answer 3",
+      a: "function myFunction()",
+      b: "function = myFunction()",
+      c: "function:myFunction()",
     },
     correctAnswer: "a",
   },
