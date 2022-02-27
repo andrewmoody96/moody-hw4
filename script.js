@@ -50,10 +50,13 @@ function logResults() {
       console.log("That ain't it.");
     }
   });
-
+  var name = prompt("What's your name?");
+  console.log(name);
   var results = countCorrect;
   console.log(results);
 };
+
+// function storeResults()
 
 function showSlide(n) {
   slides[currentSlide].classList.remove("active-slide");
