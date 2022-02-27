@@ -41,7 +41,7 @@ function gameOver() {
   localStorage.setItem("userInitials", initials);
 }
 
-// CREATE TIMER (setInterval)
+// CREATE TIMER (setInterval )
 // Run gameOver if timer === 0. 
 
 // Logs results to console & localStorage.
@@ -119,7 +119,7 @@ const myQuestions = [
       b: "Answer 2",
       c: "Answer 3",
     },
-    correctAnswer: "c",
+    correctAnswer: "a",
   },
   {
     question: "How do you call a function named 'myFunction'?",
@@ -128,7 +128,7 @@ const myQuestions = [
       b: "Answer 2",
       c: "Answer 3",
     },
-    correctAnswer: "c",
+    correctAnswer: "b",
   },
   {
     question:
@@ -138,7 +138,7 @@ const myQuestions = [
       b: "Answer 2",
       c: "Answer 3",
     },
-    correctAnswer: "c",
+    correctAnswer: "b",
   },
   {
     question: "How do you create a function in JavaScript?",
@@ -147,7 +147,7 @@ const myQuestions = [
       b: "Answer 2",
       c: "Answer 3",
     },
-    correctAnswer: "c",
+    correctAnswer: "a",
   },
 ];
 
