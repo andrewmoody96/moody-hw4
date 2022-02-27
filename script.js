@@ -27,13 +27,22 @@ function createQuiz() {
   });
   quizContainer.innerHTML = output.join("");
 }
-
+// Remove instructions text.
+// Display "GAME OVER!"
+// Display prompt to collect user's initials. -- Store input value in localStorage.
+// Store results in localStorage.
 function gameOver() {
-  prevBtn.style.display = "none";
-  nextBtn.style.display = "none";
-  submitBtn.style.display = "none";
-  scoresBtn.style.display = "inline-block";
+  document.querySelector("#selectYourAnswer-text").textContent.append("GAME OVER!");
+  var initials = prompt("Enter your initials.");
+  console.log(initials);
+  var results = countCorrect;
+  localStorage.setItem("score", results);
+  console.log(results);
+  localStorage.setItem("userInitials", initials);
 }
+
+// CREATE TIMER (setInterval)
+// Run gameOver if timer === 0. 
 
 // Logs results to console & localStorage.
 function logResults() {
@@ -57,14 +66,10 @@ function logResults() {
       console.log("That ain't it.");
     }
   });
-  var initials = prompt("Enter your initials.");
-  console.log(initials);
-  var results = countCorrect;
-  localStorage.setItem("score", results);
-  console.log(results);
-  localStorage.setItem("userInitials", initials);
   scoresBtn.style.display = "inline-block";
-};
+  // Once the last question rolls around, I'd like to have this function run. 
+  gameOver;
+}
 
 function showSlide(n) {
   slides[currentSlide].classList.remove("active-slide");
@@ -82,7 +87,7 @@ function showSlide(n) {
     nextBtn.style.display = "inline-block";
     submitBtn.style.display = "none";
   }
-}
+};
 
 function showNext() {
   showSlide(currentSlide + 1);
@@ -96,8 +101,8 @@ const quizContainer = document.getElementById("quiz");
 const scoreContainer = document.getElementById("score");
 const submitBtn = document.getElementById("submit");
 const scoresBtn = document.getElementById("scoresLink");
+// Object containing all possible questions.
 const myQuestions = [
-  // Object containing all possible questions.
   {
     question: "Inside which HTML element do we put our JavaScript?",
     answers: {
@@ -161,7 +166,7 @@ showSlide(currentSlide);
 // Event Listeners
 
 // Submits answers at the end of the quiz.
-submitBtn.addEventListener("click", logResults);
+submitBtn.addEventListener("click", logResults, gameOver);
 
 // Returns to the previous question.
 prevBtn.addEventListener("click", showPrev);
