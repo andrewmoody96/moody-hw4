@@ -27,7 +27,7 @@ function startQuiz() {
   myQuestions.forEach((currentQuestion, questionNumber) => {
     // Stores list of answers.
     const answers = [];
-
+    
     for (letter in currentQuestion.answers) {
       answers.push(
         `<br><label>
@@ -38,11 +38,11 @@ function startQuiz() {
       );
     }
     questionOutput.push(
-      `<div class="answer-container"> ${currentQuestion.answers} </div>`
+      `<div class="answer-container"> ${answers} </div>`
     );
   });
 
-  answerContainer.innerHTML = questionOutput.join("");
+  answerText.innerHTML = questionOutput.join("");
   //   Navigate through questions. Need to wait til an answer is selected to move forward though.
 }
 
@@ -106,7 +106,7 @@ var myQuestions = [
 ];
 let questionNumber = myQuestions[0];
 var questionText = document.getElementById("quiz");
-var answerContainer = document.getElementById("answers-input");
+var answerText = document.getElementById("answers-input");
 
 // EVENT LISTENERS:
 // -------------------------------------------------------------------------------------
