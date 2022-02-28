@@ -22,19 +22,41 @@ function startQuiz() {
   startBtn.style.display = "none";
   questionText.append(`Question 1: ${myQuestions[0].question}`);
 
+  const questionOutput = [];
+
+  myQuestions.forEach((currentQuestion, questionNumber) => {
+    // Stores list of answers.
+    const answers = [];
+
+    for (letter in currentQuestion.answers) {
+      answers.push(
+        `<br><label>
+            <input type="radio" name="question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.answers[letter]}
+          </label>`
+      );
+    }
+    questionOutput.push(
+      `<div class="answer-container"> ${currentQuestion.answers} </div>`
+    );
+  });
+
+  answerContainer.innerHTML = questionOutput.join("");
   //   Navigate through questions. Need to wait til an answer is selected to move forward though.
 }
 
-
-function nextQuestion() {
-    questionText++;
-}
+// Call when answer/label is selected. Then advance to next question.
+// function nextQuestion() {
+//   questionNumber++;
+// }
 
 // VARIABLES
 var startBtn = document.getElementById("startBtn");
 var submitBtn = document.getElementById("submitBtn");
 var scoresBtn = document.getElementById("scoresBtn");
-const myQuestions = [
+// object containing all questions
+var myQuestions = [
   {
     question: "Inside which HTML element do we put our JavaScript?",
     answers: {
@@ -82,11 +104,11 @@ const myQuestions = [
     correctAnswer: "a",
   },
 ];
-var questionNumber = myQuestions[0];
-var questionText = document.getElementById("quiz")
-// object containing all questions
+let questionNumber = myQuestions[0];
+var questionText = document.getElementById("quiz");
+var answerContainer = document.getElementById("answers-input");
 
 // EVENT LISTENERS:
 // -------------------------------------------------------------------------------------
 startBtn.addEventListener("click", startQuiz);
-window.addEventListener("click", nextQuestion);
+// window.addEventListener("click", nextQuestion);
