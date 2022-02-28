@@ -27,18 +27,25 @@ function createQuiz() {
   });
   quizContainer.innerHTML = output.join("");
 }
+
+let countCorrect = 0;
+
 // Remove instructions text.
 // Display "GAME OVER!"
 // Display prompt to collect user's initials. -- Store input value in localStorage.
 // Store results in localStorage.
 function gameOver() {
-  document.querySelector("#selectYourAnswer-text").textContent.append("GAME OVER!");
+  document.getElementById("selectYourAnswer-text").replaceWith("GAME OVER");
   var initials = prompt("Enter your initials.");
   console.log(initials);
-  var results = countCorrect;
-  localStorage.setItem("score", results);
-  console.log(results);
   localStorage.setItem("userInitials", initials);
+  var results = countCorrect;
+  console.log(results);
+  localStorage.setItem("score", results);
+
+  localStorage.getItem("score");
+  localStorage.getItem("userInitials")
+  // document.getElementById("scores").appendChild(`<li>${results, initials}</li>`);
 }
 
 // CREATE TIMER (setInterval )
@@ -50,7 +57,6 @@ function logResults() {
   const answerContainers = quizContainer.querySelectorAll(".answers");
 
   // keeps track of user's correct answers
-  let countCorrect = 0;
 
   myQuestions.forEach((currentQuestion, questionNumber) => {
     // finds user's selected answer
@@ -68,7 +74,7 @@ function logResults() {
   });
   scoresBtn.style.display = "inline-block";
   // Once the last question rolls around, I'd like to have this function run. 
-  gameOver;
+  gameOver();
 }
 
 function showSlide(n) {
@@ -134,9 +140,9 @@ const myQuestions = [
     question:
       "How do you write an IF statement to execute code when 'i' is not equal to 5?",
     answers: {
-      a: "Answer 1",
+      a: "if [i !=5]",
       b: "if (i != 5)",
-      c: "Answer 3",
+      c: "if i(!= 5)",
     },
     correctAnswer: "b",
   },
@@ -166,7 +172,7 @@ showSlide(currentSlide);
 // Event Listeners
 
 // Submits answers at the end of the quiz.
-submitBtn.addEventListener("click", logResults, gameOver);
+submitBtn.addEventListener("click", logResults);
 
 // Returns to the previous question.
 prevBtn.addEventListener("click", showPrev);
