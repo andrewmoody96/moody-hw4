@@ -18,6 +18,7 @@ function timer() {}
 function theQuiz() {
   timer;
   console.log("Quiz Started");
+  startBtn.style.display = "none";
   for (i = 0; i < myQuestions.length; i++) {
     console.log(`Question: ${myQuestions[i].question}`);
   }
