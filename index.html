@@ -9,39 +9,23 @@
     <link rel="stylesheet" href="./Assets/styles.css" />
   </head>
   <body>
-    <header>
-      <a href="./index.html"><h1 id="page-heading">JavaScript Code Quiz</h1></a>
-      <nav>
-        <a href="./index.html">The Game</a>
-        <a href="./scores.html">The Scores</a>
-      </nav>
-    </header>
-    <section class="container" id="instructions">
-      <article>
-        <p>
-          Instructions: All questions are multiple choice. There is only one
-          correct answer. Select your answer, and at the end of the quiz, you
-          will be presented with your score.
-        </p>
-      </article>
-    </section>
     <section class="container" id="quizContainer">
       <!-- Use JS to append questions to these ID's. -->
-      <p id="selectYourAnswer-text">Select your answer.</p>
+      <p id="selectYourAnswer-text">Select An Answer</p>
       <div class="quiz-container">
         <div id="quiz"></div>
       </div>
-      <button id="previous">Previous Question</button>
-      <button id="next">Next Question</button>
-      <button id="submit">Submit Quiz</button>
-      <a id ="scoresLink" href="./scores.html"><button id="scoresBtn">View Scores</button></a
-      >
-      <div id="results"></div>
+      <button id="startBtn">Start</button>
+      <button id="submitBtn">Submit</button>
+      <button id="scoresBtn">Scores</button>
     </section>
+    <div class="container" id="results">
+
+    </div>
     <footer>
       <p>&copy; 2022 - Created by Andrew Moody</p>
     </footer>
-    <!-- <script src="./script2.js"></script> -->
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
+    <script src="./newscript.js"></script>
   </body>
 </html>

@@ -29,9 +29,8 @@ function createQuiz() {
 }
 
 let countCorrect = 0;
+// var ol = document.getElementById("scores");
 
-// Remove instructions text.
-// Display "GAME OVER!"
 // Display prompt to collect user's initials. -- Store input value in localStorage.
 // Store results in localStorage.
 function gameOver() {
@@ -43,9 +42,9 @@ function gameOver() {
   console.log(results);
   localStorage.setItem("score", results);
 
-  localStorage.getItem("score");
-  localStorage.getItem("userInitials")
-  // document.getElementById("scores").appendChild(`<li>${results, initials}</li>`);
+  // localStorage.getItem("score");
+  // localStorage.getItem("userInitials")
+  // ol.appendChild(`<li>${initials, results}</li>`);
 }
 
 // CREATE TIMER (setInterval )
@@ -55,8 +54,6 @@ function gameOver() {
 function logResults() {
   console.log("Starting to log.");
   const answerContainers = quizContainer.querySelectorAll(".answers");
-
-  // keeps track of user's correct answers
 
   myQuestions.forEach((currentQuestion, questionNumber) => {
     // finds user's selected answer
@@ -157,7 +154,7 @@ const myQuestions = [
   },
 ];
 
-// Loads quiz when page loads.
+// Loads quiz when start button is clicked.
 createQuiz();
 
 // Navigation and slides
