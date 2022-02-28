@@ -8,6 +8,12 @@ p {
 }
 
 
+
+#submitBtn {
+    display: none;
+}
+
+
 footer {
   background-color: lightslategrey;
 }

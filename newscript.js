@@ -15,20 +15,25 @@
 
 function timer() {}
 
-function theQuiz() {
+function startQuiz() {
+  //   Starts timer, logs "Quiz Started", hides Start button.
   timer;
   console.log("Quiz Started");
   startBtn.style.display = "none";
-  for (i = 0; i < myQuestions.length; i++) {
-    console.log(`Question: ${myQuestions[i].question}`);
-  }
+  questionText.append(`Question 1: ${myQuestions[0].question}`);
+
+  //   Navigate through questions. Need to wait til an answer is selected to move forward though.
+}
+
+
+function nextQuestion() {
+    questionText++;
 }
 
 // VARIABLES
 var startBtn = document.getElementById("startBtn");
 var submitBtn = document.getElementById("submitBtn");
 var scoresBtn = document.getElementById("scoresBtn");
-// object containing all questions
 const myQuestions = [
   {
     question: "Inside which HTML element do we put our JavaScript?",
@@ -77,7 +82,11 @@ const myQuestions = [
     correctAnswer: "a",
   },
 ];
+var questionNumber = myQuestions[0];
+var questionText = document.getElementById("quiz")
+// object containing all questions
 
 // EVENT LISTENERS:
 // -------------------------------------------------------------------------------------
-startBtn.addEventListener("click", theQuiz);
+startBtn.addEventListener("click", startQuiz);
+window.addEventListener("click", nextQuestion);
