@@ -115,9 +115,9 @@ const myQuestions = [
   {
     question: "Which code example will display 'Hello World' in an alert?",
     answers: {
-      a: "Answer 1",
-      b: "Answer 2",
-      c: "Answer 3",
+      a: "alert(\"Hello World\")",
+      b: "display(\"Hello World\")",
+      c: "alert: \"Hello World\"",
     },
     correctAnswer: "a",
   },
