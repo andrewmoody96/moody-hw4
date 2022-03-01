@@ -8,7 +8,7 @@ This app is going to provide users a 5 question quiz on the basics of JavaScript
 <br>
 
 ### Issues
-This app is probably less than half built at this point in time. I keep finding roadblocks that are slowing me down. I have reached out for help from a tutor with full intent to resubmit this. I've attached a link to the GitHub pages so you can see what's available so far. At this point, I am unable to get just a single question's answers displayed.  
+This app is probably less than half built at this point in time. I keep finding roadblocks that are slowing me down. I tried to revisit the classes on JavaScript to point me in the right direction. While they helped, unfortunately it wasn't quite enough for me to connect the dots. I have reached out for help from a tutor with full intent to resubmit this. I've attached a link to the GitHub pages site so you can see what's available so far. At this point, I am unable to get just a single question's answers displayed.  
 
 <br>
 
