@@ -13,11 +13,22 @@
 // Display a text input to store user's initials and score in localStorage.
 // After clicking submit, display "Scores" and the last user's initials and score on the page.
 
-function timer() {}
-
 function startQuiz() {
   //   Starts timer, logs "Quiz Started", hides Start button.
-  timer;
+  let timeLeft = 60;
+  var quizTimer = setInterval(function () {
+    if (timeLeft <= 0) {
+      clearInterval(quizTimer);
+    }
+    document.getElementById(
+      "timer"
+    ).innerHTML = `Time Remaining: ${timeLeft} seconds`;
+    timeLeft -= 1;
+  }, 1000);
+  document.getElementById(
+    "selectYourAnswer-text"
+  ).innerHTML = `Select your answer`;
+  questionText.append(`Question 1: ${myQuestions[0].question}`);
   console.log("Quiz Started");
   startBtn.style.display = "none";
   questionText.append(`Question 1: ${myQuestions[0].question}`);
@@ -27,19 +38,17 @@ function startQuiz() {
   myQuestions.forEach((currentQuestion, questionNumber) => {
     // Stores list of answers.
     const answers = [];
-    
+
     for (letter in currentQuestion.answers) {
       answers.push(
         `<br><label>
-            <input type="radio" name="question${questionNumber}" value="${letter}">
-            ${letter} :
-            ${currentQuestion.answers[letter]}
-          </label>`
+        <input type="radio" name="question${questionNumber}" value="${letter}">
+        ${letter} :
+        ${currentQuestion.answers[letter]}
+        </label>`
       );
     }
-    questionOutput.push(
-      `<div class="answer-container"> ${answers} </div>`
-    );
+    questionOutput.push(`<div class="answer-container"> ${answers} </div>`);
   });
 
   answerText.innerHTML = questionOutput.join("");
