@@ -9,7 +9,7 @@
 
 // VARIABLES
 const startBtn = document.getElementById("startBtn");
-const submitBtn = document.getElementById("submitBtn");
+// const submitBtn = document.getElementById("submitBtn");
 const scoresBtn = document.getElementById("scoresBtn");
 // array containing all questions
 const questions = [
@@ -48,7 +48,8 @@ let questionNumber = questions[0];
 const questionContainer = document.getElementById("questionContainer");
 const questionText = document.getElementById("quiz");
 const answerContainer = document.getElementById("answers-input");
-
+const answerForm = document.getElementById("answers-form");
+const questionButtons = [document.getElementsByName("choice")];
 // START THE QUIZ ---
 // Start quiz upon click of a "start quiz" button. --- CHECK
 // As part of the quiz, also start & display a timer. --- CHECK
@@ -60,6 +61,7 @@ const answerContainer = document.getElementById("answers-input");
 // starts quiz, starts/displays timer, displays instructions, calls questionHandler.
 function startQuiz() {
   //   Starts timer, logs "Quiz Started", hides Start button.
+
   let timeLeft = 60;
   var quizTimer = setInterval(function () {
     if (timeLeft <= 0) {
@@ -79,30 +81,60 @@ function startQuiz() {
 
   questionHandler();
 }
+// question & option indexes
+let q = 0;
+let o = 0;
 
 function questionHandler() {
-  console.log("Quiz has begun.")
-  // q for questions, o for options, a for answer 
-  let q = 0
-  let o = 0
-
+  console.log("Quiz has begun.");
   // gets question and appends it to the proper div
   currentQuestion = questions[q];
   questionText.innerHTML = currentQuestion;
 
-  let [a, b, c] = [options[o].a, options[o].b, options[o].c]
-  let currentOptions = [a, b, c]
+  let [a, b, c] = [options[o].a, options[o].b, options[o].c];
+  let currentOptions = [a, b, c];
+
+  // Advances to next question and clears out prev question.
+  function next(click) { 
+    click.preventDefault();
+    q++;
+    o++;
+
+    answerForm.innerHTML = ""
+    questionHandler();
+  }
+  // write function to get value of radio button
 
   // Creates and Renders buttons
-  currentOptions.forEach((option) => {
-    answerContainer.insertAdjacentHTML("afterbegin", `<input type="radio" id="html" name="fav_language" value="${option}">
-      <label for="html">${option}</label><br>`)
-  })
 
-  // answerContainer.innerHTML = currentOptions;
+  currentOptions.forEach((option) => {
+    answerForm.insertAdjacentHTML(
+      "afterbegin",
+      `<input type="radio" name="choice" value="${option}">
+        <label for="choice">${option}</label><br>`
+    );
+  });
+
+  
+  if (q === 4) {
+    answerForm.insertAdjacentHTML(
+      "beforeend",
+      `<input id="submitBtn" type="submit" value="Submit">`
+    );
+  } else {
+    console.log(q);
+    answerForm.insertAdjacentHTML(
+      "beforeend",
+      `<button id="nextBtn">Next</button>`
+    );
+    let nextBtn = document.getElementById("nextBtn")
+    nextBtn.addEventListener("click", next);
+  }
 }
+  
 
 // EVENT LISTENERS:
 // -------------------------------------------------------------------------------------
 startBtn.addEventListener("click", startQuiz);
+// userChoice.addEventListener("")
 // window.addEventListener("click", nextQuestion);
