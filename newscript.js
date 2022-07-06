@@ -9,8 +9,8 @@
 
 // VARIABLES
 const startBtn = document.getElementById("startBtn");
-// const submitBtn = document.getElementById("submitBtn");
-const scoresBtn = document.getElementById("scoresBtn");
+
+// const scoresBtn = document.getElementById("scoresBtn");
 // array containing all questions
 const questions = [
   "Inside which HTML element do we put our JavaScript?",
@@ -44,6 +44,9 @@ const options = [
     c: "function:myFunction()",
   },
 ];
+
+let correctAnswers = 0;
+
 let questionNumber = questions[0];
 const questionContainer = document.getElementById("questionContainer");
 const questionText = document.getElementById("quiz");
@@ -59,31 +62,53 @@ const questionButtons = [document.getElementsByName("choice")];
 // -------------------------------------------------------------------------------------
 
 // starts quiz, starts/displays timer, displays instructions, calls questionHandler.
-function startQuiz() {
-  //   Starts timer, logs "Quiz Started", hides Start button.
 
+function gameOver(click) {
+  click.preventDefault()
+  finalScore = document.createElement("div")
+  finalScore.setAttribute("id", "finalScore")
+  finalScore.insertAdjacentHTML("afterbegin", `<h2>${correctAnswers}</h2>`)
+  answerContainer.append(finalScore);
+}
+
+function timeOut() {
+  finalScore = document.createElement("div")
+  finalScore.setAttribute("id", "finalScore")
+  finalScore.insertAdjacentHTML("afterbegin", `<h2>${correctAnswers}</h2>`)
+  answerContainer.append(finalScore);
+}
+let q = 0;
+let o = 0;
+
+function startQuiz() {
+  
+  // resets quiz
+  answerForm.innerHTML = ""
+  q = 0;
+  o = 0;
+  
+  //   Starts timer, logs "Quiz Started".
   let timeLeft = 60;
   var quizTimer = setInterval(function () {
-    if (timeLeft <= 0) {
-      clearInterval(quizTimer);
-    } else if (timeLeft === 0) {
-      displayScore(correct);
-    }
     document.getElementById(
       "timer"
     ).innerHTML = `Time Remaining: ${timeLeft} seconds`;
     timeLeft -= 1;
+    
+    if (timeLeft === 0) {
+      timeOut();
+    } else if (timeLeft <= 0) {
+      clearInterval(quizTimer);
+    } 
   }, 1000);
 
   document.getElementById(
     "selectYourAnswer-text"
   ).innerHTML = `Select your answer`;
-
+  
   questionHandler();
 }
 // question & option indexes
-let q = 0;
-let o = 0;
 
 function questionHandler() {
   console.log("Quiz has begun.");
@@ -105,8 +130,7 @@ function questionHandler() {
   }
   // write function to get value of radio button
 
-  // Creates and Renders buttons
-
+  // Creates and Renders radio buttons
   currentOptions.forEach((option) => {
     answerForm.insertAdjacentHTML(
       "afterbegin",
@@ -115,12 +139,14 @@ function questionHandler() {
     );
   });
 
-  
+  // Determines whether a 'next' or 'submit' button is shown based on q index.
   if (q === 4) {
     answerForm.insertAdjacentHTML(
       "beforeend",
-      `<input id="submitBtn" type="submit" value="Submit">`
+      `<button id="submitBtn">Submit</button>`
     );
+    let submitBtn = document.getElementById("submitBtn");
+    submitBtn.addEventListener("click", gameOver)
   } else {
     console.log(q);
     answerForm.insertAdjacentHTML(
