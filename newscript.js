@@ -86,11 +86,11 @@ function questionHandler() {
   let q = 0
   let o = 0
 
+  // gets question and appends it to the proper div
   currentQuestion = questions[q];
-  quiz.innerHTML = currentQuestion;
+  questionText.innerHTML = currentQuestion;
 
   let [a, b, c] = [options[o].a, options[o].b, options[o].c]
-  
   let currentOptions = [a, b, c]
 
   // Creates and Renders buttons
