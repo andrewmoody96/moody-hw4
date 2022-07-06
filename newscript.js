@@ -83,13 +83,6 @@ function gameOver() {
   timeLeft = 0;
 }
 
-function timeOut() {
-  finalScore = document.createElement("div");
-  finalScore.setAttribute("id", "finalScore");
-  finalScore.insertAdjacentHTML("afterbegin", `<h2>${correctAnswers}</h2>`);
-  answerContainer.append(finalScore);
-}
-
 function startQuiz() {
   // resets quiz
   answerForm.innerHTML = "";
@@ -106,7 +99,7 @@ function startQuiz() {
     timeLeft -= 1;
 
     if (timeLeft === 0) {
-      timeOut();
+      gameOver();
       return;
     } else if (timeLeft <= 0) {
       clearInterval(quizTimer);
