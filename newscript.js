@@ -24,9 +24,9 @@ const options = [
   //     correct: c a b b a
   { a: "head", b: "p", c: "body" },
   {
-    a: 'alert("Hello World")',
-    b: 'display("Hello World")',
-    c: 'alert: "Hello World"',
+    a: "alert('Hello World')",
+    b: "display('Hello World')",
+    c: "alert: 'Hello World'",
   },
   {
     a: "call {myFunction()}",
@@ -43,6 +43,14 @@ const options = [
     b: "function = myFunction()",
     c: "function:myFunction()",
   },
+];
+
+const correct = [
+  "body",
+  "alert('Hello World')",
+  "myFunction()",
+  "if (i != 5)",
+  "function myFunction()",
 ];
 
 let correctAnswers = 0;
@@ -62,71 +70,101 @@ const questionButtons = [document.getElementsByName("choice")];
 // -------------------------------------------------------------------------------------
 
 // starts quiz, starts/displays timer, displays instructions, calls questionHandler.
+let q = 0;
+let o = 0;
+let cA = 0;
+let timeLeft = 60;
 
-function gameOver(click) {
-  click.preventDefault()
-  finalScore = document.createElement("div")
-  finalScore.setAttribute("id", "finalScore")
-  finalScore.insertAdjacentHTML("afterbegin", `<h2>${correctAnswers}</h2>`)
+function gameOver() {
+  finalScore = document.createElement("div");
+  finalScore.setAttribute("id", "finalScore");
+  finalScore.insertAdjacentHTML("afterbegin", `<h2>Your score is ${correctAnswers += timeLeft}</h2>`);
   answerContainer.append(finalScore);
+  timeLeft = 0;
 }
 
 function timeOut() {
-  finalScore = document.createElement("div")
-  finalScore.setAttribute("id", "finalScore")
-  finalScore.insertAdjacentHTML("afterbegin", `<h2>${correctAnswers}</h2>`)
+  finalScore = document.createElement("div");
+  finalScore.setAttribute("id", "finalScore");
+  finalScore.insertAdjacentHTML("afterbegin", `<h2>${correctAnswers}</h2>`);
   answerContainer.append(finalScore);
 }
-let q = 0;
-let o = 0;
 
 function startQuiz() {
-  
   // resets quiz
-  answerForm.innerHTML = ""
+  answerForm.innerHTML = "";
   q = 0;
   o = 0;
-  
+  cA = 0;
+  questionNumber = q;
   //   Starts timer, logs "Quiz Started".
-  let timeLeft = 60;
+  // let timeLeft = 60;
   var quizTimer = setInterval(function () {
     document.getElementById(
       "timer"
     ).innerHTML = `Time Remaining: ${timeLeft} seconds`;
     timeLeft -= 1;
-    
+
     if (timeLeft === 0) {
       timeOut();
+      return;
     } else if (timeLeft <= 0) {
       clearInterval(quizTimer);
-    } 
+    }
   }, 1000);
 
   document.getElementById(
     "selectYourAnswer-text"
   ).innerHTML = `Select your answer`;
-  
+
   questionHandler();
 }
-// question & option indexes
+
+function checkAnswer() {
+  console.log("checking answer");
+  const radioButtons = document.querySelectorAll('input[name="choice"]');
+  let userAnswer;
+  for (const radioButton of radioButtons) {
+    if (radioButton.checked) {
+      userAnswer = radioButton.value;
+      console.log(userAnswer);
+      break;
+    }
+  }
+
+  if (userAnswer === correct[cA]) {
+    correctAnswers++;
+    console.log(correctAnswers);
+  } else {
+    console.log("doesn't work");
+  }
+}
 
 function questionHandler() {
-  console.log("Quiz has begun.");
   // gets question and appends it to the proper div
   currentQuestion = questions[q];
   questionText.innerHTML = currentQuestion;
 
   let [a, b, c] = [options[o].a, options[o].b, options[o].c];
   let currentOptions = [a, b, c];
+  let nextBtn;
 
   // Advances to next question and clears out prev question.
-  function next(click) { 
+  function next(click) {
     click.preventDefault();
-    q++;
-    o++;
-
-    answerForm.innerHTML = ""
-    questionHandler();
+    questionNumber++;
+    console.log(questionNumber);
+    if (questionNumber === 5) {
+      checkAnswer();
+      gameOver();
+    } else {
+      checkAnswer();
+      q++;
+      o++;
+      cA++;
+      answerForm.innerHTML = "";
+      questionHandler();
+    }
   }
   // write function to get value of radio button
 
@@ -140,27 +178,23 @@ function questionHandler() {
   });
 
   // Determines whether a 'next' or 'submit' button is shown based on q index.
-  if (q === 4) {
+  if (q === 5) {
     answerForm.insertAdjacentHTML(
       "beforeend",
       `<button id="submitBtn">Submit</button>`
     );
     let submitBtn = document.getElementById("submitBtn");
-    submitBtn.addEventListener("click", gameOver)
+    submitBtn.addEventListener("click", next);
   } else {
-    console.log(q);
     answerForm.insertAdjacentHTML(
       "beforeend",
       `<button id="nextBtn">Next</button>`
     );
-    let nextBtn = document.getElementById("nextBtn")
+    nextBtn = document.getElementById("nextBtn");
     nextBtn.addEventListener("click", next);
   }
 }
-  
 
 // EVENT LISTENERS:
 // -------------------------------------------------------------------------------------
 startBtn.addEventListener("click", startQuiz);
-// userChoice.addEventListener("")
-// window.addEventListener("click", nextQuestion);
