@@ -7,18 +7,17 @@ p {
   margin: 10px 10px;
 }
 
-
-
-#submitBtn {
-    display: none;
-}
-
-
 footer {
   background-color: lightslategrey;
 }
 
+input {
+  margin: 10px 10px;
+}
 
+div {
+  margin: 10px 0 10px 0;
+}
 
 
 

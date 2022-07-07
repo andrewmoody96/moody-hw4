@@ -1,5 +1,4 @@
 // GAME OVER ---
-// Display a text input to store user's initials and score in localStorage.
 // After clicking submit, display "Scores" and the last user's initials and score on the page.
 
 // VARIABLES
@@ -61,20 +60,24 @@ let q = 0;
 let o = 0;
 let cA = 0;
 let timeLeft = 60;
+let user = ``;
 
 
 // Display most recent score.
 
 function saveScore(initials, userScore) {
   console.log("saving score");
-  let user = `${initials.value}`;
+  console.log(user);
+  user = `${initials.value}`;
   localStorage.setItem(`${user}`, `${userScore}`);
-  
-  function getScore() {
-    console.log("getting score");
-    localStorage.getItem(`${user}`);
-    console.log(user)
-  }
+}
+
+
+function getScore() {
+  console.log("getting score");
+  user = '${initials.value}'
+  localStorage.getItem(`${user}`);
+  console.log(user)
 }
 
 function gameOver() {
@@ -211,3 +214,4 @@ function questionHandler() {
 
 // EVENT LISTENERS:
 startBtn.addEventListener("click", startQuiz);
+scoresBtn.addEventListener("click", getScore);
