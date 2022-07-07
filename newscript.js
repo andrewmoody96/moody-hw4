@@ -1,16 +1,10 @@
-// SELECTING ANSWERS ---
-// When an answer button is selected, display the next question.
-// If correct, display "Correct", else display "Incorrect" and subtract time from the timer.
-
 // GAME OVER ---
-// If timer === 0, display the score (equal to the amount of time left). -- need a function for this.
 // Display a text input to store user's initials and score in localStorage.
 // After clicking submit, display "Scores" and the last user's initials and score on the page.
 
 // VARIABLES
 const startBtn = document.getElementById("startBtn");
 
-// const scoresBtn = document.getElementById("scoresBtn");
 // array containing all questions
 const questions = [
   "Inside which HTML element do we put our JavaScript?",
@@ -61,15 +55,7 @@ const questionText = document.getElementById("quiz");
 const answerContainer = document.getElementById("answers-input");
 const answerForm = document.getElementById("answers-form");
 const questionButtons = [document.getElementsByName("choice")];
-// START THE QUIZ ---
-// Start quiz upon click of a "start quiz" button. --- CHECK
-// As part of the quiz, also start & display a timer. --- CHECK
-// When the quiz starts, remove the "start quiz" button. --- CHECK
-// When the quiz starts, display 'select an answer'. --- CHECK
-// If timer hits 0 before submitting, display user's score -- need a function for this.
-// -------------------------------------------------------------------------------------
 
-// starts quiz, starts/displays timer, displays instructions, calls questionHandler.
 let q = 0;
 let o = 0;
 let cA = 0;
@@ -78,7 +64,12 @@ let timeLeft = 60;
 function gameOver() {
   finalScore = document.createElement("div");
   finalScore.setAttribute("id", "finalScore");
-  finalScore.insertAdjacentHTML("afterbegin", `<h2>Your score is ${correctAnswers += timeLeft}</h2>`);
+  finalScore.insertAdjacentHTML(
+    "afterbegin",
+    `<h2>Your score is ${(correctAnswers +=
+      timeLeft)}</h2><br><label for="initials">Enter your initials.</label><br>
+    <input type="text" id="name" name="name" maxlength="3" onkeyup="this.value = this.value.toUpperCase();">`
+  );
   answerContainer.append(finalScore);
   timeLeft = 0;
 }
@@ -90,8 +81,7 @@ function startQuiz() {
   o = 0;
   cA = 0;
   questionNumber = q;
-  //   Starts timer, logs "Quiz Started".
-  // let timeLeft = 60;
+
   var quizTimer = setInterval(function () {
     document.getElementById(
       "timer"
@@ -113,23 +103,32 @@ function startQuiz() {
   questionHandler();
 }
 
+// DISPLAY CORRECT OR INCORRECT
+// Checks if value of selected answer matches the correct answer.
 function checkAnswer() {
-  console.log("checking answer");
+  // clears rightOrWrong for next question
+  const rightOrWrong = document.getElementById("rightOrWrong");
+  let heading = "";
+  // rightOrWrong.innerHTML = heading;
+
   const radioButtons = document.querySelectorAll('input[name="choice"]');
   let userAnswer;
   for (const radioButton of radioButtons) {
     if (radioButton.checked) {
       userAnswer = radioButton.value;
-      console.log(userAnswer);
       break;
     }
   }
 
   if (userAnswer === correct[cA]) {
     correctAnswers++;
-    console.log(correctAnswers);
+    let heading = '<h4 id="rightOrWrong" style="color: green;">Correct!</h4>';
+    rightOrWrong.innerHTML = heading;
   } else {
-    console.log("doesn't work");
+    // subtracts time (points) when incorrect
+    let heading = '<h4 id="rightOrWrong" style="color: red;">Incorrect! <span style="color: black;">-5 points</span></h4>';
+    rightOrWrong.innerHTML = heading;
+    timeLeft = timeLeft - 5;
   }
 }
 
@@ -159,7 +158,6 @@ function questionHandler() {
       questionHandler();
     }
   }
-  // write function to get value of radio button
 
   // Creates and Renders radio buttons
   currentOptions.forEach((option) => {
@@ -171,7 +169,7 @@ function questionHandler() {
   });
 
   // Determines whether a 'next' or 'submit' button is shown based on q index.
-  if (q === 5) {
+  if (q === 4) {
     answerForm.insertAdjacentHTML(
       "beforeend",
       `<button id="submitBtn">Submit</button>`
