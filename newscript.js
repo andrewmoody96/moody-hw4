@@ -4,6 +4,7 @@
 
 // VARIABLES
 const startBtn = document.getElementById("startBtn");
+const scoresBtn = document.getElementById("scoresBtn");
 
 // array containing all questions
 const questions = [
@@ -61,17 +62,38 @@ let o = 0;
 let cA = 0;
 let timeLeft = 60;
 
+
+// Display most recent score.
+
+function saveScore(initials, userScore) {
+  console.log("saving score");
+  let user = `${initials.value}`;
+  localStorage.setItem(`${user}`, `${userScore}`);
+  
+  function getScore() {
+    console.log("getting score");
+    localStorage.getItem(`${user}`);
+    console.log(user)
+  }
+}
+
 function gameOver() {
   finalScore = document.createElement("div");
   finalScore.setAttribute("id", "finalScore");
   finalScore.insertAdjacentHTML(
     "afterbegin",
-    `<h2>Your score is ${(correctAnswers +=
-      timeLeft)}</h2><br><label for="initials">Enter your initials.</label><br>
-    <input type="text" id="name" name="name" maxlength="3" onkeyup="this.value = this.value.toUpperCase();">`
+    `<h2>Your score is ${correctAnswers}</h2><br><h4>${correctAnswers}/5 correct. Time Remaining: ${timeLeft} seconds.</h4><label for="initials">Enter your initials.</label><br>
+    <input type="text" id="initials" name="initials" maxlength="3" onkeyup="this.value = this.value.toUpperCase();"><br><button id="save">Save</button>`
   );
   answerContainer.append(finalScore);
+  const saveBtn = document.getElementById("save");
+  var initials = document.getElementById("initials");
+
   timeLeft = 0;
+  console.log(initials.innerHTML);
+  saveBtn.addEventListener("click", function () {
+    saveScore(initials, correctAnswers);
+  });
 }
 
 function startQuiz() {
@@ -98,12 +120,11 @@ function startQuiz() {
 
   document.getElementById(
     "selectYourAnswer-text"
-  ).innerHTML = `Select your answer`;
+  ).innerHTML = `Select your answer.`;
 
   questionHandler();
 }
 
-// DISPLAY CORRECT OR INCORRECT
 // Checks if value of selected answer matches the correct answer.
 function checkAnswer() {
   // clears rightOrWrong for next question
@@ -126,7 +147,8 @@ function checkAnswer() {
     rightOrWrong.innerHTML = heading;
   } else {
     // subtracts time (points) when incorrect
-    let heading = '<h4 id="rightOrWrong" style="color: red;">Incorrect! <span style="color: black;">-5 points</span></h4>';
+    let heading =
+      '<h4 id="rightOrWrong" style="color: red;">Incorrect! <span style="color: black;">-5 seconds</span></h4>';
     rightOrWrong.innerHTML = heading;
     timeLeft = timeLeft - 5;
   }
@@ -147,6 +169,7 @@ function questionHandler() {
     questionNumber++;
     console.log(questionNumber);
     if (questionNumber === 5) {
+      submitBtn.setAttribute("style", "display:none;");
       checkAnswer();
       gameOver();
     } else {
@@ -164,7 +187,7 @@ function questionHandler() {
     answerForm.insertAdjacentHTML(
       "afterbegin",
       `<input type="radio" name="choice" value="${option}">
-        <label for="choice">${option}</label><br>`
+          <label for="choice">${option}</label><br>`
     );
   });
 
@@ -187,5 +210,4 @@ function questionHandler() {
 }
 
 // EVENT LISTENERS:
-// -------------------------------------------------------------------------------------
 startBtn.addEventListener("click", startQuiz);
