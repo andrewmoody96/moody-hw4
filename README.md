@@ -25,13 +25,13 @@ Click "Start" once the page has loaded and select the answer to each question. T
 
 ### Screenshots
 
-![Screenshot](./assets/images/quizStarted.png)
+![Screenshot](./Assets/images/quizStarted.png)
 
-![Screenshot](./assets/images/correctAnswer.png)
+![Screenshot](./Assets/images/correctAnswer.png)
 
-![Screenshot](./assets/images/enterInitials.png)
+![Screenshot](./Assets/images/enterInitials.png)
 
-![Screenshot](./assets/images/localStorageEntry.png)
+![Screenshot](./Assets/images/localStorageEntry.png)
 
 
 
