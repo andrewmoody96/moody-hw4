@@ -1,15 +1,59 @@
-# moody-hw4
-## JS Quiz
+# JS Quiz <br> [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-https://andrewmoody96.github.io/moody-hw4/
+---
 
 ## Description
-This app is going to provide users a 5 question quiz on the basics of JavaScript. After the quiz has been completed, users will be able to save their score and initials. Each time a quiz is finished, the score will be added to a list of existing scores and displayed on a high scores page.
+
+This app presents users with a 5 question quiz. At the end of the quiz, user's are given the option to save their score into localStorage.
+
+---
+
+## Table of Contents
+
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Testing](#testing)
+- [Questions](#questions)
+- [License](#license)
+
+---
+
+## Usage
+
+Click "Start" once the page has loaded and select the answer to each question. The app shows your score at the end of the quiz.
+
+
+### Screenshots
+![Screenshot](./assets/images/readmeCreatorScreenshot.png)
+![Screenshot](./assets/images/readmeCreatorScreenshot.png)
+![Screenshot](./assets/images/readmeCreatorScreenshot.png)
+![Screenshot](./assets/images/readmeCreatorScreenshot.png)
+![Screenshot](./assets/images/readmeCreatorScreenshot.png)
+
+---
+
+## Contributing
+
+Please fork the project.
+
+---
+
+## Testing
+
+Download and please report bugs.
+
+---
+
+## Questions
+
+If you have any questions, please send an email to <andrew.moody96@gmail.com>, or check out my [GitHub](https://github.com/andrewmoody96).
+
+---
+
+### Copyright 2022, Andrew Moody<br>
+
+#### License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <br>
-
-### Issues
-This app is probably less than half built at this point in time. I keep finding roadblocks that are slowing me down. I tried to revisit the classes on JavaScript to point me in the right direction. While they helped, unfortunately it wasn't quite enough for me to connect the dots. I have reached out for help from a tutor with full intent to resubmit this. I've attached a link to the GitHub pages site so you can see what's available so far. At this point, I am unable to get just a single question's answers displayed.  
-
-<br>
-
-I spent my time trying to get this to work before I spent any on responsive design or styling. Since I couldn't get it to work, I have not moved past the functionality. I intend to meet all of these requirements as well after resubmitting. 
+[MIT License](https://opensource.org/licenses/MIT)
